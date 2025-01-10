@@ -1,0 +1,3 @@
+<script>
+    alert("Learning JS, please dnu unless given permission by the creator.")
+</script>
