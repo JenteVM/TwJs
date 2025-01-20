@@ -1,5 +1,5 @@
 a:link, a:visited {
-    background-color: blue;
+    background-color: rgb(127,249,253);
     color: white;
     padding: 15px 25px;
     text-align: center;
@@ -8,5 +8,5 @@ a:link, a:visited {
   }
   
 a:hover, a:active {
-    background-color: blueviolet;
+    background-color: rgb(120,240,250);
 }
