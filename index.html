@@ -6,13 +6,27 @@
 </head>
 <body>
 <h1>Welcome to JVM Logistics, enter passcode to get access to the features of this site</h1>
-<button id="main_screen_button" onclick="show()">Show main screen</button>
+<form method="post" id="passwordForm" name="passcodeForm">
+<input type="password" id="passcode" name="Password_input" required>
+<input type="submit" value="Enter">
+</form>
 <iframe src="Menu.html" title="Menu" id="main_screen" style="visibility:hidden;width:100%;height:80vh;border:none;"></iframe>
 <script>
-function show(){
-    document.getElementById("main_screen").style.visibility = "visible";
-    document.getElementById("main_screen_button").style.visibility = "invisible";
+function show(password){
+    if(password == '0000'){
+        document.getElementById("main_screen").style.visibility = "visible";
+        document.getElementById("main_screen_button").style.visibility = "invisible";
+    }
 }
+const form = document.querySelector("#passcodeForm");
+
+form.addEventListener("submit", (event) =>{
+    event.preventDefault();
+    const data = new FormData(event.target)
+    const password = data.get('Password_input')
+    alert(password)
+    show(password)
+});
 </script>
 </body>
 </html>
