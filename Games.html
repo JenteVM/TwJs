@@ -28,6 +28,17 @@ background-color: rgb(17,17,17);
 </style>
 </head>
 <body>
+<h1 id="ErrorMessage" style="display:block">This page can't be loaded this way</h1>
+<script>
+const FrameLocationNotTop = window.self !== window.top;
+if (FrameLocationNotTop == false){
+window.stop();
+document.execCommand('Stop');
+}
+else{
+document.getElementById("ErrorMessage").style.display = "none";
+}
+</script>
 <ul>
 <li><a href="Menu.html">Menu</a></li>
 <li><a>Entertainement options:</a></li>
