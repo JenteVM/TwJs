@@ -35,8 +35,8 @@ table, td{
 <body>
 <h1 id="ErrorMessage" style="display:block">This page can't be loaded that way</h1>
 <script>
-const runThroughRunner = window.parent.location.pathname == "/Runner.html";
-if (runThroughRunner == false){
+const runsThroughRunner = window.parent.location.pathname == "/Runner.html";
+if (runsThroughRunner == false){
 window.stop();
 document.execCommand('Stop');
 }
