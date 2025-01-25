@@ -33,10 +33,10 @@ table, td{
 </style>
 </head>
 <body>
-<h1 id="ErrorMessage" style="display:block">This page can't be loaded this way</h1>
+<h1 id="ErrorMessage" style="display:block">This page can't be loaded that way</h1>
 <script>
-const FrameLocationNotTop = window.self !== window.top;
-if (FrameLocationNotTop == false){
+const runThroughRunner = window.parent.location.pathname == "/Runner.html";
+if (runThroughRunner == false){
 window.stop();
 document.execCommand('Stop');
 }
@@ -61,7 +61,12 @@ document.getElementById("ErrorMessage").style.display = "none";
     <tr>
         <td>Version 0.1.2</td>
         <td><ul><li>Added protection against entering pages without password</li><li>Changed menu style</li></ul></td>
-        <td>The changes make it safer against teachers and nicer looking respectively</td>
+        <td>The changes make it safer against teachers and nicer looking respectively.</td>
+    </tr>
+    <tr>
+        <td>Version 0.1.3</td>
+        <td><ul><li>Only the runner can now run freely, the others have to run through the runner</li><li>Renamed some files</li></ul></td>
+        <td>The changes make it safer and more orderly respectively.</td>
     </tr>
 </table>
 </body>
