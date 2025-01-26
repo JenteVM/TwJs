@@ -13,9 +13,12 @@
 </form>
 <iframe src="Menu.html" title="Menu" id="main_screen" style="display:none;width:100%;height:95vh;border:none"></iframe>
 <script>
-function show(){
+async function show(){
     event.preventDefault()
-    if (document.getElementById("passcode").value == 'BA'){
+    var passwordInput = document.getElementById("passcode").value
+    var hashedPassword = await sha256(passwordInput)
+    const PasswordStoredInHashForm = "296d71a7f66e75b751c597094536329dcf2cf484f83e475d91f7aea1ff4c9738"
+    if (hashedPassword == PasswordStoredInHashForm){
         document.getElementById("main_screen").style.display = "block";
         document.getElementById("passwordForm").style.display = "none";
         document.getElementById("welcome").style.display = "none";
@@ -25,6 +28,28 @@ function show(){
         document.getElementById("WrongPassword").style.display = "contents";
     }
 }
+
+//These next functions were not made by me but by https://gist.github.com/GaspardP to give credit where credit is due
+function sha256(str) {
+  var buffer = new TextEncoder("utf-8").encode(str)
+  return crypto.subtle.digest("SHA-256", buffer).then(function(hash) {
+    return hex(hash)
+  })
+}
+
+function hex(buffer) {
+  var digest = ''
+  var view = new DataView(buffer)
+  for(var i = 0; i < view.byteLength; i += 4) {
+    var value = view.getUint32(i)
+    var stringValue = value.toString(16)
+    var padding = '00000000'
+    var paddedValue = (padding + stringValue).slice(-padding.length)
+    digest += paddedValue
+  }
+  return digest
+}
+//This is the end of https://gist.github.com/GaspardP code
 </script>
 </body>
 </html>
