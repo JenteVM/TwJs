@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
+<body>
+<h1>This page will load the right content in a few seconds</h1>
+<p>Note that if this is run through an iframe it will not load to prevent some issues that may arise, so please make sure to run it through /Runner.html if it is not loading anything</p>
+</body>
 <script>
-window.onload = function() {
-    window.location.replace("/Runner.html");
+if (window.self == window.top){
+    window.onload = function() {
+        window.location.replace("/Runner.html");
+    }
 }
 </script>
 </html>

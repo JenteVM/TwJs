@@ -11,18 +11,25 @@
 <input type="password" id="passcode" name="Password_input" required>
 <input type="submit" value="Enter">
 </form>
-<iframe src="Menu.html" title="Menu" id="main_screen" style="display:none;width:100%;height:95vh;border:none"></iframe>
+<iframe src="index.html" title="Menu" id="main_screen" style="display:none;width:100%;height:95vh;border:none"></iframe>
 <script>
 async function show(){
     event.preventDefault()
     var passwordInput = document.getElementById("passcode").value
     var hashedPassword = await sha256(passwordInput)
-    const PasswordStoredInHashForm = "296d71a7f66e75b751c597094536329dcf2cf484f83e475d91f7aea1ff4c9738"
-    if (hashedPassword == PasswordStoredInHashForm){
-        document.getElementById("main_screen").style.display = "block";
-        document.getElementById("passwordForm").style.display = "none";
-        document.getElementById("welcome").style.display = "none";
-        document.getElementById("WrongPassword").style.display = "none";
+    const ATB = "296d71a7f66e75b751c597094536329dcf2cf484f83e475d91f7aea1ff4c9738" //ATB:AccessToBase;Code=BA;BA=BetaAccess
+    const ATA = "eed5a40b02e4160b4f7d92c32861b87800f232322d00e481f31f07f3fcc7adbb" //ATA:AccessToAll;Code=AccA;AccA=AccessAll
+    const ATT = "23726709e41f765d5b5b3d5fc6d91b9b4557166b094406378a8436996a2ad9ab" //ATT:AccessToTesting;Code=TP;TP=TestingPlace
+    if(hashedPassword==ATB){var PC=true;window.MOL="ATB"}
+    if(hashedPassword==ATA){var PC=true;window.MOL="ATA"}
+    if(hashedPassword==ATT){var PC=true;window.MOL="ATT"}
+    if (PC==true){
+      if(MOL=="ATB"||MOL=="ATA"){document.getElementById("main_screen").src="Menu.html";}
+      if(MOL=="ATT"){document.getElementById("main_screen").src="TestingPlace.html";}
+      document.getElementById("main_screen").style.display = "block";
+      document.getElementById("passwordForm").style.display = "none";
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("WrongPassword").style.display = "none";
     }
     else{
         document.getElementById("WrongPassword").style.display = "contents";
